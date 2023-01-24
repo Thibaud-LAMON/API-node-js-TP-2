@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth')
 
 //POST
 //enregistre un utilisateur
-router.post('/register', agentCtrl.signup);
+router.post('/register', agentCtrl.signup); //fonctionne
 
 //POST
 //connecter un utilisateur

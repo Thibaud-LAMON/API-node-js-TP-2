@@ -27,15 +27,15 @@ exports.login = (req, res, next) => {
 
     Agent.findOne({
         numAgent: req.body.numAgent,
-        grade: req.body.numAgent,
+        grade: req.body.grade,
         password: req.body.password
     })
         .then(agent => {
-            if (!agent) { //si agent est vide, on l'arrête
+            if (!agent) {
                 console.log('agent introuvable')
                 return res.status(401).json({ message: "Agent introuvable" })
             }
-            bcrypt.compare(req.body.password, agent.password) //agent n'est pas vide
+            bcrypt.compare(req.body.password, agent.password)
                 .then(valid => {
                     if (!valid) {
                         console.log('mdp invalide')
@@ -59,15 +59,13 @@ exports.login = (req, res, next) => {
 
 exports.update = (req, res, next) => {
 
-    Agent.findOne({
-        grade: req.body.numAgent,
-    })
+    Agent.updateOne({ _id: req.params.grade }, { ...req.body, _id: req.params.grade })
         .then(agent => {
-            if (!agent) { //si agent est vide, on l'arrête
+            if (!agent) {
                 console.log('pas autorisé')
                 return res.status(401).json({ message: "Pas autorisé" })
             }
-            bcrypt.compare(req.body.password, agent.password) //agent n'est pas vide
+            bcrypt.compare(req.body.password, agent.password)
                 .then(valid => {
                     if (!valid) {
                         console.log('mdp invalide')

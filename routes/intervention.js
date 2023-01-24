@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const stuffCtrl = require('../controllers/invention')
+const stuffCtrl = require('../controllers/intervention')
 const auth = require('../middlewares/auth')
 
 //POST
@@ -13,7 +13,7 @@ router.get('/', auth, stuffCtrl.getOneStuff);
 
 //GET
 
-router.get('/all', stuffCtrl.getAllStuff);
+router.get('/all', stuffCtrl.getAllStuff);//fonctionne
 
 //DELETE
 
