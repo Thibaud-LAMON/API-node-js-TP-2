@@ -2,9 +2,13 @@ const Intervention = require("../models/Intervention");
 
 exports.createStuff = (req, res, next) => {
 
+    delete req.body._id;
+    delete req.body.numAgent;
     const intervention = new Intervention({
-        ...req.body //on prend tous les éléments du body de Intervention
+        ...req.body,
+        numAgent: req.auth.numAgent
     });
+
 
     intervention.save()
         .then(() => res.status(201).json({ message: "Intervention enregistrée !!" }))//code 201 = donnée créée
@@ -19,7 +23,7 @@ exports.getOneStuff = (req, res, next) => {
         grade: req.body.numAgent,
         password: req.body.password
     })
-        .then(intervention => res.status(200).json(intervention)) //ref dans find
+        .then(intervention => res.status(200).json(intervention))
         .catch(error => res.status(400).json({ error }));
 
 }
@@ -34,7 +38,7 @@ exports.getAllStuff = (req, res, next) => {
 
 exports.deleteStuff = (req, res, next) => {
 
-    Intervention.deleteOne({ _id: req.params.id }) //"_id" = paramètre de la requête ; "id" = champs dans la base de données
+    Intervention.deleteOne({ _id: req.params.id })
         .then(agent => {
             if (!agent) {
                 return res.status(401).json({ message: "Ce n'est pas votre intervention" })

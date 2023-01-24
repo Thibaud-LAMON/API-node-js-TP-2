@@ -9,7 +9,7 @@ router.post('/register', agentCtrl.signup); //fonctionne
 
 //POST
 //connecter un utilisateur
-router.post('/login', agentCtrl.login);
+router.post('/login', agentCtrl.login); //fonctionne
 
 //POST
 //enregistre un utilisateur

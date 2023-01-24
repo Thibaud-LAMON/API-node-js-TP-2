@@ -28,7 +28,6 @@ exports.login = (req, res, next) => {
     Agent.findOne({
         numAgent: req.body.numAgent,
         grade: req.body.grade,
-        password: req.body.password
     })
         .then(agent => {
             if (!agent) {

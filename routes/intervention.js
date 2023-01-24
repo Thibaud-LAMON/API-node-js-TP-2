@@ -5,11 +5,11 @@ const auth = require('../middlewares/auth')
 
 //POST
 
-router.post('/', auth, stuffCtrl.createStuff);
+router.post('/', auth, stuffCtrl.createStuff);//fonctionne
 
 //GET
 
-router.get('/', auth, stuffCtrl.getOneStuff);
+router.get('/', auth, stuffCtrl.getOneStuff);//fonctionne
 
 //GET
 
