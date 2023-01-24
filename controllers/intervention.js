@@ -9,7 +9,6 @@ exports.createStuff = (req, res, next) => {
         numAgent: req.auth.numAgent
     });
 
-
     intervention.save()
         .then(() => res.status(201).json({ message: "Intervention enregistrée !!" }))//code 201 = donnée créée
         .catch(error => res.status(400).json({ error }));//erreur 400 = erreur humaine

@@ -7,10 +7,10 @@ module.exports = (req, res, next) => {
         const token = req.headers.authorization.split(' ')[1];
         const decodedtokent = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
 
-        const userId = decodedtokent.userID;
+        const numAgent = decodedtokent.numAgent;
 
         req.auth = {
-            userId: userId
+            numAgent: numAgent
         }
 
         next();
